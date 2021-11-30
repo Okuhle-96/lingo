@@ -1,0 +1,89 @@
+body {
+    background-color: #975ab6;
+    margin: 20px;
+}
+
+.burlywood {
+    background-color: burlywood;
+    text-decoration: none;
+    padding: 20px;
+    margin: 20px;
+    width: 220px;
+}
+
+.brown {
+    background-color: coral;
+    padding: 20px;
+    margin: 20px;
+    width: 220px;
+}
+
+.bronze {
+    background-color: brown;
+    padding: 20px;
+    margin: 20px;
+    width: 220px;
+}
+
+.logo img {
+    height: 350px;
+    width: 400px;
+}
+
+.welcome p {
+    color: white;
+    margin-bottom: 50px;
+}
+
+
+.enterName .name {
+    padding: 10px;
+    width: 250px;
+    margin: 10px;
+}
+
+.enterName .button {
+    padding: 10px;
+    width: 150px;
+    margin: 10px;
+    background-color: transparent;
+    border: 2px solid white;
+    text-transform: uppercase;
+    color: white;
+    font-weight: bold;
+}
+
+.linkTo {
+    margin-top: 50px;
+}
+
+.linkTo a {
+    color: white;
+    font-weight: bolder;
+    text-transform: uppercase;
+    font-size: 17px;
+    margin-top: 50px;
+    text-decoration: none;
+    padding-top: 20px;
+}
+
+.linkTo a:hover {
+    color: black;
+}
+
+.start button{
+    background: burlywood;
+    color: white;
+    padding: 20px;
+    width: 250px;
+    font-size: 17px;
+    font-weight: bolder;
+    text-transform: uppercase;
+    border: 0;
+}
+
+/* levels */
+
+.levels {
+    display: block;
+}
