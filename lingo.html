@@ -80,6 +80,17 @@
                     const classPrediction = classLabels[i] + ": " + result.scores[i].toFixed(2);
                     labelContainerA.childNodes[i].innerHTML = classPrediction;
                 }
+                // let max = 0;
+                // let label;
+                // const scores = result.scores; // probability of prediction for each class
+                // // render the probability scores per class
+                // for (let prob of scores) {
+                //     if(prob.probable > max){
+                //         max = prob.probable;
+                //         label = prob.classLabels
+                //     }
+                //     // const classPrediction = classLabels[i] + ": " + result.scores[i].toFixed(2);
+                //     labelContainerA.innerHTML = label;}
             }, {
                 includeSpectrogram: true, // in case listen should return result.spectrogram
                 probabilityThreshold: 0.75,
