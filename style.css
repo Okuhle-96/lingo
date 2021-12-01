@@ -6,23 +6,39 @@ body {
 .burlywood {
     background-color: burlywood;
     text-decoration: none;
-    padding: 20px;
+    padding: 30px;
     margin: 20px;
     width: 220px;
+    border: 2px solid burlywood;
+    border-radius: 10px;
 }
 
 .brown {
     background-color: coral;
-    padding: 20px;
+    padding: 30px;
     margin: 20px;
     width: 220px;
+    border: 2px solid coral;
+    border-radius: 10px;
 }
 
 .bronze {
-    background-color: brown;
-    padding: 20px;
+    background-color: chocolate;
+    padding: 30px;
     margin: 20px;
     width: 220px;
+    border: 2px solid chocolate;
+    border-radius: 10px;
+}
+
+.border a {
+    text-decoration: none;
+    color: white;
+    width: 220px;
+    font-size: 20px;
+    padding: 30px;
+    padding-left: 45px;
+    font-weight: bolder;
 }
 
 .logo img {
@@ -71,6 +87,10 @@ body {
     color: black;
 }
 
+.start {
+    margin-bottom: 50px;
+}
+
 .start button{
     background: burlywood;
     color: white;
@@ -86,4 +106,8 @@ body {
 
 .levels {
     display: block;
+}
+
+.border {
+    border: 3px solid white;
 }
