@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/grid.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <title>Profile</title>
+    <script type="text/x-template" class="playerTemplate">
+		{{#each player}}
+			<li>
+				{{this}}
+			</li>
+		{{/each}}
+	</script>
+    <script type="text/x-template" class="levelTemplate">
+		{{#each level}}
+			<li>
+				{{this}}
+			</li>
+		{{/each}}
+	</script>
+</head>
+<body>
+    <section class="container">
+        <section class="container">
+            <div class="center logo">
+                <img src="../images/LINGOUP.png" alt="">
+               
+            </div>
+
+            <div class="center">
+                <div class="flex">
+                    <label class="players">Player : {{this}}</label>
+                    <label class="players">Level : {{this}}</label>
+                </div>
+            </div>
+      
+     <div class="levels center">
+         <div class="burlywood center">
+             <div class="col-2-sm border" >
+                <a href="./lingo.html">Beginner</a>
+             </div>
+         </div>
+         <div class="brown center">
+            <div class="col-2-sm border" >
+            <a href="./intermediate.html">Intermediate</a>
+            </div>
+         </div>
+         <div class="bronze center">
+            <div class="col-2-sm border" >
+            <a href="./pro">ProLevel</a>
+            </div>
+         </div>
+        
+       
+     </div>
+     <div class="col-8-sm icons">
+        <div class=" back">
+            <a href="../index.html">
+               <img src="../images/icons8-previous-60.png" alt="">
+            </a>
+        </div>
+    
+         <div class=" certi">
+             <a href="./certificate.html"><img src="../images/icons8-quality-60.png" alt=""></a>
+         </div>
+         <div class="right info">
+             <a href="./instructions.html">
+               <img src="../images/icons8-info-squared-60.png" alt="">
+                </a>
+         </div>
+     </div>
+        
+
+    </section>
+</body>
+</html>
