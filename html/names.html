@@ -18,7 +18,7 @@
         </div>
 
         <div class="center start">
-            <button type="button" onclick="init()">Start</button>
+            <button type="button" onclick="initName()">Start</button>
         </div>
 
         <div class="center">
@@ -44,6 +44,33 @@
 
         let model, webcam, labelContainer, maxPredictions;
 
+        var mamela = false;
+        var bona = true;
+
+        var names = {
+            "Nonzwakazi": 0,
+            "Linamandla": 0,
+            "Buhlebendalo": 0,
+            "Okuhle": 0,
+            "Ntsika": 0,
+
+        }
+
+        var currentNameIndex = 0;
+
+        var currentName;
+
+        function GetToNextName() {
+            if (currentNameIndex < names.length) {
+                currentNameIndex++
+            }
+        }
+
+        function initName() {
+            initTheVoice();
+            init();
+        }
+
         async function init() {
             const modelURL = URL + "model.json";
             const metadataURL = URL + "metadata.json";
@@ -61,35 +88,68 @@
 
             document.getElementById("webcam-container").appendChild(webcam.canvas);
             labelContainer = document.getElementById("label-container");
-            
+
             for (let i = 0; i < maxPredictions; i++) {
                 labelContainer.appendChild(document.createElement("div"));
             }
         }
 
-        async function initVoice() {
-                const recognizer = await createModel();
-                const classLabels = recognizer.wordLabels();
-                const labelContainerV = document.getElementById("label-containers");
-                for (let i = 0; i < classLabels.length; i++) {
-                    labelContainers.appendChild(document.createElement("div"));
+        async function initTheVoice() {
+            const recognizer = await createModel();
+            const classLabels = recognizer.wordLabels();
+            const labelContainerV = document.getElementById("label-containers");
+            for (let i = 0; i < classLabels.length; i++) {
+                labelContainerV.appendChild(document.createElement("div"));
+            }
+
+            recognizer.listen(result => {
+                if (!mamela) {
+                    return
                 }
 
-                recognizer.listen(result => {
-                    const scores = result.scores;
-                    for (let i = 0; i < classLabels.length; i++) {
-                        const classPrediction = classLabels[i] + ": " + result.scores[i].toFixed(2);
-                        labelContainers.childNodes[i].innerHTML = classPrediction;
+                if (bona) {
+                    return
+                }
+
+                labelContainerV.innerHTML = "Listening........"
+
+                let label;
+                let max = 0;
+                const scores = result.scores;
+
+                for (let i = 0; i < classLabels.length; i++) {
+                    if (result.scores[i] > max) {
+                        max = result.scores[i]
+                        label = classLabels[i]
                     }
-                }, {
-                    includeSpectrogram: true,
-                    probabilityThreshold: 0.75,
-                    invokeCallbackOnNoiseAndUnknown: true,
-                    overlapFactor: 0.50
-                });
+                    // const classPrediction = classLabels[i] + ": " + result.scores[i].toFixed(2);
+                    // labelContainers.childNodes[i].innerHTML = classPrediction;
+                }
 
 
-            }
+                if (label == cuurentName) {
+                    mamela = false;
+
+
+                    labelContainerV.innerHTML = `That's right ${label}`;
+                    currentName = "";
+                    playName();
+
+                    setTimeout(function () {
+                        bona = true;
+                    }, 1000)
+                }
+
+
+            }, {
+                includeSpectrogram: true,
+                probabilityThreshold: 0.75,
+                invokeCallbackOnNoiseAndUnknown: true,
+                overlapFactor: 0.50
+            });
+
+
+        }
 
         async function loop() {
             webcam.update();
@@ -97,13 +157,38 @@
             window.requestAnimationFrame(loop);
         }
 
+        function getNameAudio(word) {
+            var audi = new Audio(`./sounds/${word}.mp4`);
+            return audi
+        }
+
+        function playName() {
+            var audi = new Audio(`../sounds/bell.mp3`);
+            audi.playName()
+        }
+
+        let webCam = document.querySelector(".webCam");
+        labelContainer = document.getElementById("label-container");
+
+
         async function predict() {
+
+            if (mamela) {
+                return;
+            }
+
+            if(!bona){
+                return;
+            }
+
 
             let maxPrediction = 0;
             let name;
 
             const prediction = await model.predict(webcam.canvas);
+            
             for (let prob of prediction) {
+                
                 if (prob.probability > maxPrediction) {
                     maxPrediction = prob.probability;
                     name = prob.className;
@@ -111,11 +196,32 @@
 
                 labelContainer.innerHTML = name;
             }
+
+            if (maxPrediction < 0.8) {
+                console.log({
+                    maxPrediction,
+                    name
+                })
+                return
+            }
+
+            let peoplesName = names[name]
+
+            if(peoplesName !== undefined) {
+                currentName = name;
+                bona = false;
+                getNameAudio(currentName).playName();
+
+                setTimeout(function (){
+                    mamela = true;
+                }, 4000)
+            }
+
         }
 
         async function createModel() {
-            const checkpointURL = URLv + "model.json";
-            const metadataURLs = URLv + "metadata.json";
+            const checkpointURL = URLV + "model.json";
+            const metadataURLs = URLV + "metadata.json";
 
             const recognizer = speechCommands.create(
                 "BROWSER_FFT",
