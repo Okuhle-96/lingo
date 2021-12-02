@@ -111,3 +111,17 @@ body {
 .border {
     border: 3px solid white;
 }
+
+#label-containerA{
+    color: white;
+    font-weight: bolder;
+    font-size: x-large;
+
+}
+
+#label-container{
+    color: white;
+    font-weight: bolder;
+    font-size: x-large;
+
+}
