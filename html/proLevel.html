@@ -16,11 +16,9 @@
         <div class="center logo">
             <img src="../images/LINGOUP.png" alt="">
         </div>
-
         <div class="center start">
             <button type="button" onclick="initPro()">Start Game</button>
         </div>
-
 
         <div class="center">
             <div class="webCam" id="webcam-container"></div>
@@ -30,8 +28,6 @@
         <div class="center">
             <div id="label-containerB"></div>
         </div>
-
-
 
     </section>
 
@@ -60,7 +56,7 @@
             "Kwa-Langa": 0,
             "Egqeberha": 0,
             "Engqamakhwe": 0
-        }
+        };
 
         var currWordIndex = 0;
 
@@ -125,33 +121,33 @@
                 if (see) {
                     return;
                 }
-                labelContainerB.innerHTML = "Listening...."
 
-                let label;
-                let max = 0;
+                labelContainerB.innerHTML = "Listening..."
+
+                let itsalabel;
+                let maxi = 0;
                 const scores = result.scores; // probability of prediction for each class
                 // render the probability scores per class
                 for (let i = 0; i < classLabels.length; i++) {
-                    if (result.scores[i] > max) {
-                        max = result.scores[i]
-                        label = classLabels[i]
+                    if (result.scores[i] > maxi) {
+                        maxi = result.scores[i]
+                        itsalabel = classLabels[i]
                     }
                     // const classPrediction = classLabels[i] + ": " + result.scores[i].toFixed(2);
                     // labelContainerB.childNodes[i].innerHTML = classPrediction;
                 }
 
-                if (label == currWord) {
+                if (itsalabel == currWord) {
                     hear = false;
 
-                    labelContainerB.innerHTML = `That's right ${label}!`;
-                    currWord = "";
+                    labelContainerB.innerHTML = `That's right ${itsalabel}!`;
+                    currWord = '';
                     play();
 
                     setTimeout(function () {
                         see = true;
                     }, 1000)
                 }
-
             }, {
                 includeSpectrogram: true, // in case listen should return result.spectrogram
                 probabilityThreshold: 0.75,
@@ -169,8 +165,8 @@
             window.requestAnimationFrame(loop);
         }
 
-        function getPlaceAudio(word) {
-            var aud = new Audio(`./sounds/${word}.mp4`);
+        function getPlaceAudio(itsaword) {
+            var aud = new Audio(`../sounds/${itsaword}.mp4`);
             return aud;
         }
 
@@ -204,18 +200,12 @@
                     maxPredi = props.probability
                     placeLebel = props.className
                 }
-
-                labelContainer.innerHTML = placeLebel
+                labelContainer.innerHTML = placeLebel;
 
             }
 
             if (maxPredi < 0.8) {
-                console.log({
-                    maxPredi,
-                    placeLebel
-                })
                 return
-
             }
 
             let placeWord = amagama[placeLebel]
