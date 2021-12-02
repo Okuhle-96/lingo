@@ -25,6 +25,8 @@
             <div id="label-container"></div>
         </div>
 
+        
+
         <div id="label-containerA"></div>
 
     </section>
@@ -49,6 +51,10 @@
             // or files from your local hard drive
             // Note: the pose library adds "tmImage" object to your window (window.tmImage)
             model = await tmImage.load(modelURL, metadataURL);
+
+            
+
+
             maxPredictions = model.getTotalClasses();
             // Convenience function to setup a webcam
             const flip = true; // whether to flip the webcam
@@ -74,12 +80,38 @@
             // 1. A callback function that is invoked anytime a word is recognized.
             // 2. A configuration object with adjustable fields
             recognizer.listen(result => {
+
+
+                var slowDown = false;
+
+
+                if(slowDown){
+                     return;
+                }
+                slowDown = true;
+
+                console.log(result)
+                let label;
+                let max = 0; 
                 const scores = result.scores; // probability of prediction for each class
                 // render the probability scores per class
                 for (let i = 0; i < classLabels.length; i++) {
-                    const classPrediction = classLabels[i] + ": " + result.scores[i].toFixed(2);
-                    labelContainerA.childNodes[i].innerHTML = classPrediction;
-                }
+                    if( result.scores[i] > max){
+                        max = result.scores[i] 
+                        label = classLabels[i] 
+                    }
+
+                //     const classPrediction = classLabels[i] + ": " + result.scores[i].toFixed(2);
+                //     labelContainerA.childNodes[i].innerHTML = classPrediction;
+                 }
+                 setTimeout(function(){ 
+                    slowDown = false ;
+// alert(label)
+                    labelContainerA.innerHTML = label;
+
+
+                  }, 10000);
+
                 // let max = 0;
                 // let label;
                 // const scores = result.scores; // probability of prediction for each class
