@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/grid.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/speech-commands@0.4.0/dist/speech-commands.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <section class="container">
+        <div class="center logo">
+            <img src="../images/LINGOUP.png" alt="">
+           
+        </div>
+
+
+
+<div class="names center">
+    <div id="webcam-container"></div>
+    <div id="label-container"></div>
+</div>
+
+<div class="center">
+    <button type="button" onclick="init()">Start</button>
+</div>
+
+<div class="center voiceMachine"> 
+    <button type="button" class="voice" >Say Voice</button>
+    <div id="label-containers"></div>
+</div>
+
+
+
+</section>
+
+<script src="../js/names.js"></script>
+<script src="../js/namesVoice.js"></script>
+
+</body>
+
+</html>
+</body>
+</html>
