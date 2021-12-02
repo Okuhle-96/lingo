@@ -45,6 +45,7 @@
         // Load the image model and setup the webcam
         
         var listen = false;
+        var watch = true;
 
         var words = {
             "Isitya" : 0, 
@@ -85,6 +86,8 @@
             webcam = new tmImage.Webcam(300, 300, flip); // width, height, flip
             await webcam.setup(); // request access to the webcam
             await webcam.play();
+
+            
             window.requestAnimationFrame(loop);
             // append elements to the DOM
             document.getElementById("webcam-container").appendChild(webcam.canvas);
@@ -116,6 +119,11 @@
                 if (!listen) {
                     return;
                 }
+
+                if (watch) {
+                    return;
+                }
+
                 labelContainerA.innerHTML = "listening..."
 
                 let label;
@@ -137,6 +145,11 @@
                     currentWord = '';
                     playBell();
 
+                    setTimeout(function(){
+                        watch = true;
+                    }, 1000)
+
+                    // webcam.play();
                     // setTimeout(function () {
                     //     // slowDown = false;
                     //     listem = true;
@@ -186,6 +199,11 @@
                 return;
             }
 
+            if (!watch) {
+                return;
+            }
+
+
             var maxPredi = 0
             var nameLebel;
             // predict can take in an image, video or canvas html element
@@ -212,10 +230,18 @@
 
             if (theWord !== undefined){
                 currentWord = nameLebel;
+                watch = false;
                 getAudio(currentWord).play();
                 // webCam.innerHTML = ""
+
+
+                setTimeout(function(){
+                    listen = true;
+
+                }, 4000)
+
                 // await webcam.stop();
-                listen = true;
+
                 // const flip = true; // whether to flip the webcam
                 
                 // webcam = new tmImage.Webcam(300, 300, flip); // width, height, flip
