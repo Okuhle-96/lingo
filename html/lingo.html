@@ -65,7 +65,6 @@
             }
         }
 
-
         function initAll() {
             initVoice();
             init();
@@ -87,7 +86,6 @@
             await webcam.setup(); // request access to the webcam
             await webcam.play();
 
-            
             window.requestAnimationFrame(loop);
             // append elements to the DOM
             document.getElementById("webcam-container").appendChild(webcam.canvas);
@@ -112,9 +110,7 @@
             // 1. A callback function that is invoked anytime a word is recognized.
             // 2. A configuration object with adjustable fields
             
-
             recognizer.listen(result => {
-                
                 // if we are not listening or slowedDown
                 if (!listen) {
                     return;
@@ -135,7 +131,6 @@
                         max = result.scores[i]
                         label = classLabels[i]
                     }
-
                 }
 
                 if (label == currentWord) {
@@ -149,16 +144,7 @@
                         watch = true;
                     }, 1000)
 
-                    // webcam.play();
-                    // setTimeout(function () {
-                    //     // slowDown = false;
-                    //     listem = true;
-                    // }, 5000);
-
                 }
-
-                
-
             }, {
                 includeSpectrogram: true, // in case listen should return result.spectrogram
                 probabilityThreshold: 0.75,
@@ -187,14 +173,10 @@
             audio.play();
         }
 
-        
-
         let webCam = document.querySelector(".webCam");
         labelContainer = document.getElementById("label-container");
 
         async function predict() {
-
-
             if (listen){
                 return;
             }
@@ -202,7 +184,6 @@
             if (!watch) {
                 return;
             }
-
 
             var maxPredi = 0
             var nameLebel;
@@ -232,28 +213,11 @@
                 currentWord = nameLebel;
                 watch = false;
                 getAudio(currentWord).play();
-                // webCam.innerHTML = ""
-
 
                 setTimeout(function(){
                     listen = true;
-
                 }, 4000)
-
-                // await webcam.stop();
-
-                // const flip = true; // whether to flip the webcam
-                
-                // webcam = new tmImage.Webcam(300, 300, flip); // width, height, flip
-                // await webcam.setup(); // request access to the webcam
-                // await webcam.play();
-                // window.requestAnimationFrame(loop);
-                // document.getElementById("webcam-container").appendChild(webcam.canvas);
-
             }
-
-
-            
         }
 
         async function createModel() {
