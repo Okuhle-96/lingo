@@ -32,20 +32,23 @@
         <div class="col-8-sm icons">
             <div class=" back">
                 <a href="./profille.html">
-                   <img src="../images/icons8-previous-60.png" alt="">
+                    <img src="../images/icons8-previous-60.png" alt="">
                 </a>
             </div>
-        
-             <div class="right certi">
-                 <a href="./brInst.html">
-                   <img src="../images/icons8-info-squared-60.png" alt="">
-                    </a>
-             </div>
 
-             <div class="info">
+            <div class="right certi">
+                <a href="./brInst.html">
+                    <img src="../images/icons8-info-squared-60.png" alt="">
+                </a>
+            </div>
+
+            <div class="info">
                 <a href="./bronze.html"><img src="../images/icons8-next-50.png" alt=""></a>
             </div>
-         </div>
+
+
+            
+        </div>
 
 
     </section>
@@ -62,16 +65,16 @@
         const URLA = "https://teachablemachine.withgoogle.com/models/NLnPWFYG4/";
         let model, webcam, labelContainer, maxPredictions;
         // Load the image model and setup the webcam
-        
+
         var listen = false;
         var watch = true;
 
         var words = {
-            "Isitya" : 0, 
-            "Ikomityi" : 0, 
-            "Ibhakethi" : 0, 
-            "Ijagi" : 0, 
-            "Ipleyiti" : 0
+            "Isitya": 0,
+            "Ikomityi": 0,
+            "Ibhakethi": 0,
+            "Ijagi": 0,
+            "Ipleyiti": 0
         };
 
         var currentWordIndex = 0;
@@ -128,7 +131,7 @@
             // listen() takes two arguments:
             // 1. A callback function that is invoked anytime a word is recognized.
             // 2. A configuration object with adjustable fields
-            
+
             recognizer.listen(result => {
                 // if we are not listening or slowedDown
                 if (!listen) {
@@ -159,7 +162,7 @@
                     currentWord = '';
                     playBell();
 
-                    setTimeout(function(){
+                    setTimeout(function () {
                         watch = true;
                     }, 1000)
 
@@ -196,7 +199,7 @@
         labelContainer = document.getElementById("label-container");
 
         async function predict() {
-            if (listen){
+            if (listen) {
                 return;
             }
 
@@ -217,7 +220,7 @@
 
                 labelContainer.innerHTML = nameLebel;
             }
-            
+
             if (maxPredi < 0.8) {
                 console.log({
                     maxPredi,
@@ -228,12 +231,12 @@
 
             let theWord = words[nameLebel]
 
-            if (theWord !== undefined){
+            if (theWord !== undefined) {
                 currentWord = nameLebel;
                 watch = false;
                 getAudio(currentWord).play();
 
-                setTimeout(function(){
+                setTimeout(function () {
                     listen = true;
                 }, 4000)
             }

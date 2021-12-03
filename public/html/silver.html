@@ -9,7 +9,7 @@
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <title>Intermediate Certificate</title>
 </head>
-<body>
+<body onload="playSound()">
     <section class="container">
         <section class="container">
             <div class="center logo">
@@ -23,6 +23,14 @@
                 <h3>Congratulations you have completed the Intermediate Level! You may now move on to the next level!</h3>
                 <img src="../images/silver.png" alt="">
             </section>
+
+            <script>
+                const playSound = () => {
+                    var tempela = new Audio("/sounds/tempela.mpeg");
+                    tempela.play();
+                }
+    
+            </script>
 
      
             <section class="center icon">
