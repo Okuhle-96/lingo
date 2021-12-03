@@ -112,12 +112,22 @@ body {
     border: 3px solid white;
 }
 
-<<<<<<< HEAD:style.css
 #label-containerA{
     color: white;
     font-weight: bolder;
     font-size: x-large;
+}
 
+#label-containerB{
+    color: white;
+    font-weight: bolder;
+    font-size: x-large;
+}
+
+#label-containerV{
+    color: white;
+    font-weight: bolder;
+    font-size: x-large;
 }
 
 #label-container{
@@ -126,7 +136,6 @@ body {
     font-size: x-large;
 
 }
-=======
 .instruct {
     padding: 20px;
     margin: 20px;
@@ -219,4 +228,3 @@ body {
 .inter h5, .begin h5, .pro h5{
     color: white
 }
->>>>>>> 7f1e31b9a7d9096724af64123e9e35c0fae6faf3:css/style.css
