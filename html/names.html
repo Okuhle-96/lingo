@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/grid.css">
-    <title>Names</title>
+    <title>Intermediate Level</title>
 </head>
 
 <body class="container">
@@ -18,7 +18,7 @@
         </div>
 
         <div class="center start">
-            <button type="button" onclick="initName()">Start</button>
+            <button type="button" onclick="initName()">Start Game</button>
         </div>
 
         <div class="center">
@@ -29,6 +29,25 @@
         <div class="center">
             <div id="label-containerV"></div>
         </div>
+
+        <div class="col-8-sm icons">
+            <div class=" back">
+                <a href="../profile.html">
+                   <img src="../images/icons8-previous-60.png" alt="">
+                </a>
+            </div>
+        
+             <div class="right certi">
+                 <a href="./silInst.html">
+                   <img src="../images/icons8-info-squared-60.png" alt="">
+                    </a>
+             </div>
+
+             <div class=" info">
+                <a href="./silver.html"><img src="../images/icons8-next-50.png" alt=""></a>
+            </div>
+         </div>
+
 
     </section>
 
@@ -52,9 +71,8 @@
             "Linamandla": 0,
             "Buhlebendalo": 0,
             "Okuhle": 0,
-            "Ntsika": 0,
-
-        }
+            "Ntsika": 0
+        };
 
         var currentNameIndex = 0;
 
@@ -97,42 +115,42 @@
         async function initTheVoice() {
             const recognizer = await createModel();
             const classLabels = recognizer.wordLabels();
-            const labelContainerV = document.getElementById("label-containers");
+            const labelContainerV = document.getElementById("label-containerV");
             for (let i = 0; i < classLabels.length; i++) {
                 labelContainerV.appendChild(document.createElement("div"));
             }
 
             recognizer.listen(result => {
                 if (!mamela) {
-                    return
+                    return;
                 }
 
                 if (bona) {
-                    return
+                    return;
                 }
 
-                labelContainerV.innerHTML = "Listening........"
+                labelContainerV.innerHTML = "Listening..."
 
-                let label;
-                let max = 0;
+                let labell;
+                let maxx = 0;
                 const scores = result.scores;
 
                 for (let i = 0; i < classLabels.length; i++) {
-                    if (result.scores[i] > max) {
-                        max = result.scores[i]
-                        label = classLabels[i]
+                    if (result.scores[i] > maxx) {
+                        maxx = result.scores[i]
+                        labell = classLabels[i]
                     }
                     // const classPrediction = classLabels[i] + ": " + result.scores[i].toFixed(2);
                     // labelContainers.childNodes[i].innerHTML = classPrediction;
                 }
 
 
-                if (label == cuurentName) {
+                if (labell == currentName) {
                     mamela = false;
 
 
-                    labelContainerV.innerHTML = `That's right ${label}`;
-                    currentName = "";
+                    labelContainerV.innerHTML = `That's right ${labell}`;
+                    currentName = '';
                     playName();
 
                     setTimeout(function () {
@@ -157,14 +175,14 @@
             window.requestAnimationFrame(loop);
         }
 
-        function getNameAudio(word) {
-            var audi = new Audio(`./sounds/${word}.mp4`);
+        function getNameAudio(wordd) {
+            var audi = new Audio(`../sounds/${wordd}.mp4`);
             return audi
         }
 
         function playName() {
             var audi = new Audio(`../sounds/bell.mp3`);
-            audi.playName()
+            audi.play()
         }
 
         let webCam = document.querySelector(".webCam");
@@ -198,10 +216,6 @@
             }
 
             if (maxPrediction < 0.8) {
-                console.log({
-                    maxPrediction,
-                    name
-                })
                 return
             }
 
@@ -210,7 +224,7 @@
             if(peoplesName !== undefined) {
                 currentName = name;
                 bona = false;
-                getNameAudio(currentName).playName();
+                getNameAudio(currentName).play();
 
                 setTimeout(function (){
                     mamela = true;
@@ -240,4 +254,4 @@
 
 </body>
 
-</html> -->
+</html>

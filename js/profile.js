@@ -5,5 +5,8 @@ let theplayer = document.querySelector(".theplayer");
 
 // btn.addEventListener("click", function () {
     theplayer.innerHTML = "Hello " + JSON.parse(localStorage.getItem('names'));
+    setTimeout(function(){
+        theplayer.innerHTML = "";
+ }, 1800);
 
 // });

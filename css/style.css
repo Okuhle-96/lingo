@@ -3,6 +3,12 @@ body {
     margin: 20px;
 }
 
+.white h2 {
+    color: rgb(245, 181, 97);
+    font-weight: bolder;
+    margin-bottom: 30px;
+}
+
 .burlywood {
     background-color: burlywood;
     text-decoration: none;
@@ -92,11 +98,11 @@ body {
 }
 
 .start button{
-    background: rgb(219, 166, 96);
+    background: burlywood;
     color: white;
     padding: 20px;
     width: 250px;
-    font-size: 17px;
+    font-size: larger;
     font-weight: bolder;
     text-transform: uppercase;
     border: 0;
@@ -116,18 +122,7 @@ body {
     color: white;
     font-weight: bolder;
     font-size: x-large;
-}
 
-#label-containerB{
-    color: white;
-    font-weight: bolder;
-    font-size: x-large;
-}
-
-#label-containerV{
-    color: white;
-    font-weight: bolder;
-    font-size: x-large;
 }
 
 #label-container{
@@ -136,6 +131,7 @@ body {
     font-size: x-large;
 
 }
+
 .instruct {
     padding: 20px;
     margin: 20px;
@@ -188,8 +184,24 @@ body {
     padding: 20px;
 }
 
+.icon {
+    margin-top: 50px; 
+    padding: 20px;
+    margin-left: 90px;
+    
+}
+
 
 .info a {
+    font-weight: bolder;
+    color: white;
+    /* font-style: italic; */
+    text-decoration: none;
+    background-color: transparent;
+}
+
+
+.infos a {
     font-weight: bolder;
     color: white;
     /* font-style: italic; */
@@ -214,6 +226,12 @@ body {
     margin-left: 45px;
 }
 
+.infos img{
+    height: 130px;
+    width: 200px;
+    /* margin-left: 45px; */
+}
+
 .fas {
   
     width: 30px;
@@ -229,8 +247,65 @@ body {
     color: white
 }
 
-.theplayer{
+#label-containerA{
     color: white;
+    font-weight: bolder;
+    font-size: x-large;
+
+}
+
+#label-containerB {
+    color: white;
+    font-weight: bolder;
+    font-size: x-large;
+}
+
+#label-container{
+    color: white;
+    font-weight: bolder;
+    font-size: x-large;
+
+}
+
+.welcomeMsg {
+    color: rgb(255, 189, 102);
+    margin-top: 50px;
+    font-size: large;
+    font-weight: bolder;
+}
+
+h3 {
+    color: white;
+}
+
+#label-containerA{
+    color: white;
+    font-weight: bolder;
+    font-size: x-large;
+}
+
+#label-containerB{
+    color: white;
+    font-weight: bolder;
+    font-size: x-large;
+}
+
+#label-containerV{
+    color: white;
+    font-weight: bolder;
+    font-size: x-large;
+}
+
+#label-container{
+    color: white;
+    font-weight: bolder;
+    font-size: x-large;
+
+}
+
+.flex .theplayer {
+    color: white;
+    margin-bottom: 40px;
     font-weight: bolder;
     font-size: x-large;
 }
