@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/grid.css">
-    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <!-- <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script> -->
     <title>Profile</title>
     <script type="text/x-template" class="playerTemplate">
 		{{#each player}}
@@ -22,6 +22,8 @@
 			</li>
 		{{/each}}
 	</script>
+
+    
 </head>
 <body>
     <section class="container">
@@ -33,11 +35,14 @@
 
             <div class="center">
                 <div class="flex">
-                    <label class="players">Player : {{this}}</label>
-                    <label class="players">Level : {{this}}</label>
+                    <!-- <label class="players">Player : {{this}}</label> -->
+                    <!-- <label class="players">Level : {{this}}</label> -->
+                    <label class="theplayer"></label>
                 </div>
             </div>
-      
+
+            
+
      <div class="levels center">
          <div class="burlywood center">
              <div class="col-2-sm border" >
@@ -76,5 +81,6 @@
         
 
     </section>
+    <script src="../js/profile.js"></script>
 </body>
 </html>
